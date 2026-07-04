@@ -5,11 +5,12 @@ import { motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { productAPI } from '@/lib/api';
 
-export default function ServicesSection() {
+export default function ServicesSection({zIndex=2}) {
 
     const [products, setProducts] = useState([]);
     const [active, setActive] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const [page] = useState(1);
     const [search] = useState('');
@@ -18,6 +19,7 @@ export default function ServicesSection() {
 
     const fetchProducts = useCallback(async () => {
         setLoading(true);
+        setError(null);
 
         try {
             const { data } = await productAPI.getAll({
@@ -26,11 +28,16 @@ export default function ServicesSection() {
                 sort,
             });
 
-            setProducts(data.data.products);
+            setProducts(data?.data?.products || []);
 
         } catch (err) {
-            console.log(err);
+            console.error('ServicesSection: failed to fetch products', err);
             setProducts([]);
+            setError(
+                err?.response?.status
+                    ? `Failed to load products (status ${err.response.status}).`
+                    : 'Failed to load products. The server may be waking up — please refresh in a few seconds.'
+            );
         } finally {
             setLoading(false);
         }
@@ -41,7 +48,7 @@ export default function ServicesSection() {
     }, [fetchProducts]);
 
     return (
-        <section className="bg-black py-10" id="services">
+        <section className="relative bg-black py-10" id="services" style={{zIndex}}>
 
             <div className="mx-auto max-w-[1400px] px-6">
 
@@ -55,11 +62,31 @@ export default function ServicesSection() {
 
                 </div>
 
-                {loading ? (
+                {loading && (
                     <div className="text-center text-white">
                         Loading...
                     </div>
-                ) : (
+                )}
+
+                {!loading && error && (
+                    <div className="mx-auto max-w-md rounded-lg border border-red-500/30 bg-red-500/10 px-6 py-4 text-center text-sm text-red-400">
+                        {error}
+                        <button
+                            onClick={fetchProducts}
+                            className="mt-3 block w-full rounded-md bg-red-500/20 py-2 text-red-300 hover:bg-red-500/30"
+                        >
+                            Retry
+                        </button>
+                    </div>
+                )}
+
+                {!loading && !error && products.length === 0 && (
+                    <div className="text-center text-gray-400">
+                        No products available right now.
+                    </div>
+                )}
+
+                {!loading && !error && products.length > 0 && (
 
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 place-items-start">
 
@@ -115,14 +142,11 @@ export default function ServicesSection() {
                                         >
 
                                             <Image
-                                                // src={`http://localhost:5000/uploads/${product.image}`}
-                                                src={`https://thinktree-carsdoor-backend.onrender.com/uploads/${product.image}`}
+                                                src={`${product.imageUrl}`}
                                                 alt={product.name}
                                                 fill
                                                 className="object-cover"
                                             />
-
-                                            {console.log("Img path", product.image)}
 
                                         </motion.div>
                                         <motion.div

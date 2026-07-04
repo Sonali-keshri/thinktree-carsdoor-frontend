@@ -7,16 +7,25 @@ const brands = [
   { name: 'Honda', logo: '/honda.png', width: 135 },
   { name: 'Kia', logo: '/kn.png', width: 95 },
   { name: 'Hyundai', logo: '/hyundai.png', width: 145 },
-  { name: 'BMW', logo: '/bmw.png', width: 120 }, 
+  { name: 'BMW', logo: '/bmw.png', width: 120 },
   { name: 'Renault', logo: '/renault.png', width: 125 },
 ];
+
+const fadeMaskStyle = {
+  maskImage:
+    'linear-gradient(to right, transparent, white 10%, white 90%, transparent)',
+  WebkitMaskImage:
+    'linear-gradient(to right, transparent, white 10%, white 90%, transparent)',
+  maskRepeat: 'no-repeat',
+  WebkitMaskRepeat: 'no-repeat',
+};
 
 export default function BrandSection() {
   const marqueeBrands = [...brands, ...brands];
 
   return (
-    <section className="w-full overflow-hidden border-y border-[#2c2c2c] bg-[#202020] " >
-   
+    <section className="relative w-full overflow-hidden border-y border-[#2c2c2c] bg-[#202020]">
+
       <style jsx global>{`
         @keyframes marquee {
           0% { transform: translateX(0%); }
@@ -31,9 +40,12 @@ export default function BrandSection() {
       `}</style>
 
       <div className="mx-auto max-w-[1500px] px-4 py-6">
-        
-        <div className="relative flex w-full overflow-x-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-          
+
+        <div
+          className="relative flex w-full overflow-x-hidden"
+          style={fadeMaskStyle}
+        >
+
           <div className="animate-marquee flex min-w-full shrink-0 items-center justify-around gap-12 pr-12">
             {marqueeBrands.map((brand, index) => (
               <div

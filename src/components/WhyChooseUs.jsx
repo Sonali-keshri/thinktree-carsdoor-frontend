@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import BrandShowcase from './BrandShowcase';
 
-export default function WhyChooseUs({ zIndex = 0}) {
+export default function WhyChooseUs({ zIndex = 3}) {
   return (
     <section className="relative overflow-hidden bg-black pt-24 "  style={{ zIndex }}>
 
@@ -78,6 +79,8 @@ export default function WhyChooseUs({ zIndex = 0}) {
         </motion.div>
       </motion.div>
 
+  
+      <BrandShowcase zIndex={3} />
     </section>
   );
 }
