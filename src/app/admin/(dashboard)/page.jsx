@@ -112,9 +112,9 @@ export default function AdminDashboard() {
                         {product.name}
                       </Link>
                     </td>
-                    <td className="px-6 py-4 text-sm text-surface-500">{product.category}</td>
-                    <td className="px-6 py-4 text-sm font-medium">{formatPrice(product.price)}</td>
-                    <td className="px-6 py-4 text-sm">{product.stock}</td>
+                    <td className="px-6 py-4 text-sm text-surface-500 text-black/60">{product.category}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-black/60">{formatPrice(product.price)}</td>
+                    <td className="px-6 py-4 text-sm text-black/60">{product.stock}</td>
                   </tr>
                 ))
               )}
