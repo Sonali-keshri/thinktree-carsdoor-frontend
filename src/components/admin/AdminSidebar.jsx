@@ -9,6 +9,7 @@ import {
   LogOut,
   Store,
   ChevronRight,
+  Book
 } from 'lucide-react';
 import clsx from 'clsx';
 import { useAuth } from '@/context/AuthContext';
@@ -18,6 +19,7 @@ const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/products', label: 'Products', icon: Package },
   { href: '/admin/products/new', label: 'Add Product', icon: PlusCircle },
+  { href: '/admin/enquiry', label: 'Enquiry', icon: Book },
 ];
 
 export default function AdminSidebar() {
