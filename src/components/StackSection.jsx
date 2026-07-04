@@ -6,16 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * `zIndex` should be set PER STACK GROUP, starting at 0 for the first panel
- * in that group — not globally incremented across the whole page. Each
- * stack group is independent; only sections meant to overlap each other
- * need to be in the same rising z-index sequence.
- *
- * `bgClassName` gives the wrapper a solid background so that when the inner
- * panel scales down, you see a clean shrinking card — not a transparent gap
- * that lets the panel underneath bleed through.
- */
+
 export default function StackSection({
   children,
   zIndex = 0,
@@ -35,7 +26,7 @@ export default function StackSection({
             trigger: sectionRef.current,
             start: 'top top',
             end: 'bottom top',
-            scrub: 0.6, // slight lag behind scroll = feels smoother than 1:1 tracking
+            scrub: 0.6, 
           },
         });
       }

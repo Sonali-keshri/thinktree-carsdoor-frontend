@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ zIndex = 0}) {
   return (
-    <section className="relative overflow-hidden bg-black pt-24 ">
+    <section className="relative overflow-hidden bg-black pt-24 "  style={{ zIndex }}>
 
       <div className="mx-auto max-w-[1200px] px-6">
 

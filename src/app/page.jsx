@@ -17,7 +17,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-surface-950">
       <Navbar />
 
-      {/* ===== Stack group 1: Hero -> About -> Services ===== */}
+   
       <StackSection zIndex={0}>
         <HeroSection />
       </StackSection>
@@ -30,15 +30,12 @@ export default function HomePage() {
         <ServicesSection />
       </StackSection>
 
-      {/* ===== Normal flow, not part of any stack ===== */}
-      <StackSection zIndex={3} >
 
-        <WhyChooseUs />
-      </StackSection>
+        <WhyChooseUs zIndex={3}/>
+
       <StackSection zIndex={4} >
         <BrandShowcase />
       </StackSection>
-      {/* ===== Stack group 2: Testimonial -> Blog ===== */}
       <StackSection zIndex={5}>
         <TestimonialSection />
       </StackSection>
@@ -47,7 +44,6 @@ export default function HomePage() {
         <BlogSection />
       </StackSection>
 
-      {/* ===== Normal flow, not part of any stack ===== */}
       <StackSection zIndex={7} isLast>
       <ContactSection />
       </StackSection>

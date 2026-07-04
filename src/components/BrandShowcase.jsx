@@ -15,7 +15,7 @@ export default function BrandSection() {
   const marqueeBrands = [...brands, ...brands];
 
   return (
-    <section className="w-full overflow-hidden border-y border-[#2c2c2c] bg-[#202020] ">
+    <section className="w-full overflow-hidden border-y border-[#2c2c2c] bg-[#202020] " >
    
       <style jsx global>{`
         @keyframes marquee {
