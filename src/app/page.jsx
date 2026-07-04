@@ -1,7 +1,5 @@
-
 'use client';
 
-import { Package } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import BrandShowcase from '@/components/BrandShowcase';
@@ -19,29 +17,40 @@ export default function HomePage() {
     <div className="min-h-screen bg-surface-950">
       <Navbar />
 
-      {/* ===== Stacked scroll sections ===== */}
-      {/* <StackSection zIndex={0}> */}
-      <HeroSection />
-      {/* </StackSection> */}
-
+      {/* ===== Stack group 1: Hero -> About -> Services ===== */}
       <StackSection zIndex={0}>
+        <HeroSection />
+      </StackSection>
+
+      <StackSection zIndex={1}>
         <AboutSection />
       </StackSection>
 
-      <StackSection zIndex={1} isLast>
+      <StackSection zIndex={2} >
         <ServicesSection />
       </StackSection>
 
+      {/* ===== Normal flow, not part of any stack ===== */}
+      <StackSection zIndex={3} >
 
+        <WhyChooseUs />
+      </StackSection>
+      <StackSection zIndex={4} >
+        <BrandShowcase />
+      </StackSection>
+      {/* ===== Stack group 2: Testimonial -> Blog ===== */}
+      <StackSection zIndex={5}>
+        <TestimonialSection />
+      </StackSection>
 
-      <WhyChooseUs />
+      <StackSection zIndex={6} >
+        <BlogSection />
+      </StackSection>
 
-
-
-      <BrandShowcase />
-      <TestimonialSection />
-      <BlogSection />
+      {/* ===== Normal flow, not part of any stack ===== */}
+      <StackSection zIndex={7} isLast>
       <ContactSection />
+      </StackSection>
       <Footer />
     </div>
   );

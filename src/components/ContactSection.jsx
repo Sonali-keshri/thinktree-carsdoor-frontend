@@ -13,10 +13,9 @@ export default function ContactSection() {
                 <div className="absolute inset-0 bg-black" />
                 <div className=" absolute inset-0 bg-gradient-to-r from-black via-transparent to-black " />
                 <div className=" absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 " />
-
             </div>
 
-            <div className=" relative z-10 mx-auto flex min-h-[720px] max-w-[1500px] flex-col items-center justify-between px-6 py-20 lg:flex-row lg:px-0  " >
+            <div className=" relative z-10 mx-auto flex min-h-[720px] max-w-[1500px] flex-col items-center justify-between md:px-6 py-20 lg:flex-row lg:px-0  " >
 
                 <motion.div
                     initial={{ opacity: 0, x: -80 }}
@@ -28,18 +27,34 @@ export default function ContactSection() {
 
                     <div className=" absolute left-[-250px] top-[-120px] h-[850px] w-[850px] rounded-full bg-white/[0.05] blur-[240px] " />
 
+                    {/*
+                      The image itself gets a CSS mask so every edge fades to
+                      transparent (revealing the black section background
+                      behind it) instead of ending in a hard rectangle.
+                      This is a property of the image, so it behaves the
+                      same on mobile and desktop.
+                    */}
                     <Image
                         src="/blackfrontcar.png"
                         alt="Black Car"
                         width={900}
                         height={700}
                         priority
-                        className=" relative z-10 h-auto w-full max-w-[760px] object-cover select-none" />
-
-                    <div className=" absolute inset-0 bg-gradient-to-r from-transparent via-black/15 to-black z-30 pointer-events-none" />
-
-                    <div className=" absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-30 pointer-events-none"
+                        className=" relative z-10 h-auto w-full max-w-[760px] object-cover select-none"
+                        style={{
+                            maskImage:
+                                "radial-gradient(ellipse 75% 70% at 50% 50%, black 45%, transparent 85%)",
+                            WebkitMaskImage:
+                                "radial-gradient(ellipse 75% 70% at 50% 50%, black 45%, transparent 85%)",
+                            maskRepeat: "no-repeat",
+                            WebkitMaskRepeat: "no-repeat",
+                        }}
                     />
+
+                    {/* soft directional fades layered on top, now blending into a masked image instead of a hard-edged one */}
+                    <div className=" absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black z-30 pointer-events-none" />
+                    <div className=" absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-30 pointer-events-none" />
+                    <div className=" absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-30 pointer-events-none lg:hidden" />
                 </motion.div>
 
                 <motion.div
@@ -47,7 +62,7 @@ export default function ContactSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
-                    className=" mt-16 w-full max-w-[600px] lg:mt-0 lg:w-[50%] lg:pr-20">
+                    className=" mt-16 w-full max-w-[600px] lg:mt-0 lg:w-[50%] lg:pr-20 px-6 md:px-0">
                     <div>
 
                         <h2 className=" font-ptsans text-center text-[34px] leading-[1.3] text-white lg:text-left lg:text-[40px]">
@@ -111,8 +126,11 @@ export default function ContactSection() {
 
             </div>
 
-            <div
-                className=" absolute bottom-0 left-0 h-[120px] w-full bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-non" />
+            {/* Mobile */}
+            <div className="absolute inset-y-0 left-0 w-12 sm:w-20 lg:w-52 z-30 pointer-events-none bg-gradient-to-r from-black via-black/40 lg:via-black/70 to-transparent" />
+
+            <div className="absolute inset-y-0 right-0 w-12 sm:w-20 lg:w-52 z-30 pointer-events-none bg-gradient-to-l from-black via-black/40 lg:via-black/70 to-transparent" />
+            <div className=" absolute bottom-0 left-0 h-[120px] w-full bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-non" />
 
         </section>
 

@@ -8,16 +8,16 @@ export default function HeroSection() {
   return (
 
     <section
-      className="relative min-h-screen overflow-hidden bg-blacktext-white flex flex-col justify-between pt-32"
+      className="relative min-h-screen overflow-hidden bg-blacktext-white flex flex-col justify-between pt-40 md:pt-32"
     >
       <div className="absolute top-0 left-0 right-0 h-[90%]  z-0">
         <Image
           src="/herobg.png"
           alt="Hero Background"
           priority
-          height={600}
           width={1920}
-          className="object-cover object-top opacity-60 h-[94%] w-[80%] mx-auto"
+          height={900}
+          className=" object-cover object-top opacity-40 w-[170%] sm:w-[120%] lg:w-[80%] h-[85%] sm:h-[100%] lg:h-[94%] mx-auto"
         />
       </div>
 
@@ -69,41 +69,12 @@ export default function HeroSection() {
 
       </div>
 
-      <div className=" absolute bottom-[72px] left-0 w-full h-28 z-30 pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent  "/>
-      <div className=" absolute top-0 right-0 w-[200px] h-full z-30 pointer-events-none bg-gradient-to-l from-black via-black/80 to-transparent"/>
-
-<div className=" absolute inset-y-0 left-0 w-52 z-30 pointer-events-none bg-gradient-to-r from-black via-black/70 to-transparent" />
-<div className=" absolute inset-y-0 right-0 w-52 z-30 pointer-events-none bg-gradient-to-l from-black via-black/70 to-transparent "/>
-<div className=" absolute inset-y-0 left-0 w-52 z-30 pointer-events-none bg-gradient-to-r from-black via-black/70 to-transparent "/>
-<div className=" absolute inset-y-0 right-0 w-52 z-30 pointer-events-none bg-gradient-to-l from-black via-black/70 to-transparent " />
+      <div className="hidden lg:block absolute bottom-[38px] left-0 w-full h-28 z-30 pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent" />
+      <div className="hidden lg:block absolute top-0 right-0 w-[200px] h-full z-30 pointer-events-none bg-gradient-to-l from-black via-black/80 to-transparent" />
+      <div className="hidden lg:block absolute inset-y-0 left-0 w-52 z-30 pointer-events-none bg-gradient-to-r from-black via-black/70 to-transparent" />
+      <div className="hidden lg:block absolute inset-y-0 right-0 w-52 z-30 pointer-events-none bg-gradient-to-l from-black via-black/70 to-transparent" />
+      
      
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="relative z-40 w-full border-t border-white/10 bg-[#1A1A1A] backdrop-blur-md"
-      >
-        <div className="mx-auto max-w-[1440px] px-6 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm md:text-base lg:text-lg">
-            <span className="font-sans font-medium italic tracking-wide text-white">
-              High-quality Accessories
-            </span>
-
-            <span className="text-red-600 text-lg font-bold select-none hidden sm:inline">*</span>
-
-            <span className="font-sans font-medium italic tracking-wide text-white">
-              30 Years of Experience
-            </span>
-
-            <span className="text-red-600 text-lg font-bold select-none hidden sm:inline">*</span>
-
-            <span className="font-sans font-medium italic tracking-wide text-white">
-              Personalised Service
-            </span>
-
-          </div>
-        </div>
-      </motion.div>
 
     </section>
   );

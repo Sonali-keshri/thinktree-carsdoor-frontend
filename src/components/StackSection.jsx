@@ -7,47 +7,55 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * StackSection
- * Genuinely PINS this section in place while the next StackSection
- * scrolls up and covers it — real GSAP pinning, not CSS sticky,
- * so it won't silently break due to parent overflow/transform styles.
+ * `zIndex` should be set PER STACK GROUP, starting at 0 for the first panel
+ * in that group — not globally incremented across the whole page. Each
+ * stack group is independent; only sections meant to overlap each other
+ * need to be in the same rising z-index sequence.
  *
- * IMPORTANT: give each StackSection an increasing `zIndex` prop
- * (0, 1, 2, 3...) so later sections stack visually ON TOP of
- * earlier ones as they cover them.
- *
- * Usage:
- * <StackSection zIndex={0}><HeroSection /></StackSection>
- * <StackSection zIndex={1}><AboutSection /></StackSection>
- * <StackSection zIndex={2}><ServicesSection /></StackSection>
- * <StackSection zIndex={3} isLast><WhyChooseUs /></StackSection>
+ * `bgClassName` gives the wrapper a solid background so that when the inner
+ * panel scales down, you see a clean shrinking card — not a transparent gap
+ * that lets the panel underneath bleed through.
  */
-export default function StackSection({ children, zIndex = 0, isLast = false }) {
-  const ref = useRef(null);
+export default function StackSection({
+  children,
+  zIndex = 0,
+  isLast = false,
+  bgClassName = 'bg-black',
+}) {
+  const sectionRef = useRef(null);
+  const innerRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (!isLast) {
-        ScrollTrigger.create({
-          trigger: ref.current,
-          start: 'top top',
-          end: '+=150%',     
-          pin: true,
-          pinSpacing: false,
+        gsap.to(innerRef.current, {
+          scale: 0.92,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.6, // slight lag behind scroll = feels smoother than 1:1 tracking
+          },
         });
       }
-    }, ref);
+    }, sectionRef);
 
     return () => ctx.revert();
   }, [isLast]);
 
   return (
     <div
-      ref={ref}
-      className="relative  w-full overflow-hidden"
+      ref={sectionRef}
+      className={`sticky top-0  w-full overflow-hidden ${bgClassName}`}
       style={{ zIndex }}
     >
-      {children}
+      <div
+        ref={innerRef}
+        className={`h-full w-full origin-center will-change-transform ${bgClassName}`}
+      >
+        {children}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,37 @@ import { motion } from 'framer-motion';
 
 export default function AboutSection() {
   return (
-    <section className="relative overflow-hidden bg-black py-20 lg:py-32" id="about">
+    <>
+
+     <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="relative z-40 w-full border-t border-white/10 bg-[#1A1A1A] backdrop-blur-md"
+      >
+        <div className="mx-auto md:max-w-[1440px] px-6 py-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm md:text-base lg:text-lg">
+            <span className="font-sans font-medium italic tracking-wide text-white">
+              High-quality Accessories
+            </span>
+
+            <span className="text-red-600 text-lg font-bold select-none hidden sm:inline">*</span>
+
+            <span className="font-sans font-medium italic tracking-wide text-white">
+              30 Years of Experience
+            </span>
+
+            <span className="text-red-600 text-lg font-bold select-none hidden sm:inline">*</span>
+
+            <span className="font-sans font-medium italic tracking-wide text-white">
+              Personalised Service
+            </span>
+
+          </div>
+        </div>
+      </motion.div>
+       <section className="relative overflow-hidden bg-black py-20 lg:py-10" id="about">
+
 
       <div className="mx-auto grid max-w-[1440px] items-center gap-16 px-6 lg:grid-cols-2 lg:px-20">
 
@@ -71,5 +101,7 @@ export default function AboutSection() {
 
       </div>
     </section>
+    </>
+   
   );
 }
