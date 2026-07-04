@@ -115,11 +115,14 @@ export default function ServicesSection() {
                                         >
 
                                             <Image
-                                                src={`http://localhost:5000/uploads/${product.image}`}
+                                                // src={`http://localhost:5000/uploads/${product.image}`}
+                                                src={`https://thinktree-carsdoor-backend.onrender.com/uploads/${product.image}`}
                                                 alt={product.name}
                                                 fill
                                                 className="object-cover"
                                             />
+
+                                            {console.log("Img path", product.image)}
 
                                         </motion.div>
                                         <motion.div

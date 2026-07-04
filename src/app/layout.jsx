@@ -27,6 +27,11 @@ const ptSans = PT_Sans({
 export const metadata = {
   title: 'Car Decor',
   description: 'Premium Car Accessories Website',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    
+  },
 };
 
 export default function RootLayout({ children }) {

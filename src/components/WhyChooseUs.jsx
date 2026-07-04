@@ -56,25 +56,26 @@ export default function WhyChooseUs() {
       >
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black via-transparent to-transparent" />
 
-      <motion.div
-  animate={{
-    scale: [1, 1.04, 1],
-  }}
-  transition={{
-    duration: 7,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
->
-  <Image
-    src="/wheels.png"
-    alt="Wheels"
-    width={1600}
-    height={400}
-    className="mx-auto w-full max-w-[1100px] object-contain"
-  />
-</motion.div>
-
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+            rotateZ: [-1, 1, -1],
+            scale: [1, 1.02, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <Image
+            src="/wheels.png"
+            alt="Wheels"
+            width={1600}
+            height={400}
+            className="mx-auto w-full max-w-[1100px] object-contain"
+          />
+        </motion.div>
       </motion.div>
 
     </section>

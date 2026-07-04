@@ -1,45 +1,3 @@
-// 'use client';
-
-// import { Package } from 'lucide-react';
-// import Navbar from '@/components/Navbar';
-// import HeroSection from '@/components/HeroSection';
-// import BrandShowcase from '@/components/BrandShowcase';
-// import BlogSection from '@/components/BlogSection';
-// import Footer from '@/components/Footer';
-// import AboutSection from '@/components/AboutSection';
-// import ServicesSection from '@/components/ServicesSection';
-// import WhyChooseUs from '@/components/WhyChooseUs';
-// import TestimonialSection from '@/components/TestimonialSection';
-// import ContactSection from '@/components/ContactSection';
-
-
-// export default function HomePage() {
-
-//   return (
-//     <div className="min-h-screen bg-surface-950">
-//       <Navbar />
-
-//       <HeroSection />
-
-//       <AboutSection />
-
-//       <ServicesSection />
-
-//       <BrandShowcase />
-
-//       <WhyChooseUs />
-
-//       <TestimonialSection />
-
-//       <BlogSection />
-
-//       <ContactSection />
-
-//       <Footer />
-//     </div>
-//   );
-// }
-
 
 'use client';
 
@@ -63,7 +21,7 @@ export default function HomePage() {
 
       {/* ===== Stacked scroll sections ===== */}
       {/* <StackSection zIndex={0}> */}
-        <HeroSection />
+      <HeroSection />
       {/* </StackSection> */}
 
       <StackSection zIndex={0}>
@@ -74,9 +32,9 @@ export default function HomePage() {
         <ServicesSection />
       </StackSection>
 
-      
- 
-        <WhyChooseUs />
+
+
+      <WhyChooseUs />
 
 
 

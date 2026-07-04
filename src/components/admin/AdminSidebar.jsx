@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { useAuth } from '@/context/AuthContext';
+import Image from 'next/image';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
@@ -31,12 +32,17 @@ export default function AdminSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-surface-950 text-white">
       <div className="flex h-16 items-center gap-3 border-b border-white/10 px-6">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600">
-          <Store className="h-5 w-5" />
-        </div>
+        
         <div>
-          <h1 className="text-sm font-bold tracking-wide">CarDecor</h1>
-          <p className="text-xs text-white/50">Admin Panel</p>
+          <Image
+            src="/logo.png"
+            alt="Car Decor"
+            width={170}
+            height={60}
+            priority
+            className="object-contain"
+          />
+        
         </div>
       </div>
 

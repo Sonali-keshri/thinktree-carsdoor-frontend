@@ -155,7 +155,7 @@ export default function ProductForm({ initialData, onSubmit, loading, submitLabe
               </label>
             )}
           </div>
-          {!preview && (
+          {/* {!preview && (
             <div className="mt-3">
               <Input
                 label="Or paste image URL"
@@ -165,7 +165,7 @@ export default function ProductForm({ initialData, onSubmit, loading, submitLabe
                 placeholder="https://..."
               />
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

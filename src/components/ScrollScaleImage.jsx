@@ -6,16 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * ScrollScaleImage
- * Image grows bigger as you scroll DOWN through its section,
- * and automatically shrinks back if you scroll UP.
- * This is "scrubbed" — the scale is directly tied to scroll
- * position, not a one-time trigger, so it's naturally reversible.
- *
- * Usage:
- * <ScrollScaleImage src="/herocar.png" alt="Car" from={1} to={1.4} />
- */
 export default function ScrollScaleImage({
   src,
   alt = '',
@@ -37,15 +27,15 @@ export default function ScrollScaleImage({
           ease: 'none',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top bottom',   // animation starts when section enters bottom of viewport
-            end: 'bottom top',     // ends when section exits top of viewport
-            scrub: true,           // ties progress directly to scroll position (reversible)
+            start: 'top bottom',    
+            end: 'bottom top',     
+            scrub: true,           
           },
         }
       );
     }, containerRef);
 
-    return () => ctx.revert(); // cleanup on unmount / hot reload
+    return () => ctx.revert(); 
   }, [from, to]);
 
   return (
