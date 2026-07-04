@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+  }
+
+  img{
+    user-select:none;
+    pointer-events:none;
+  }
+
+}
+
+@layer utilities{
+
+  .orbitron{
+    font-family:'Orbitron',sans-serif;
+  }
+
+  .text-shadow{
+    text-shadow:0 0 30px rgba(255,255,255,.25);
+  }
+
+  .hero-overlay{
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.20),
+      rgba(0,0,0,.45),
+      rgba(0,0,0,.80),
+      #000
+    );
+  }
+
+  .glass{
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.04);
+  }
+
+}
+
+
+/* TESTIMONIAL SLIDER */
+
+
+.slick-slider {
+  overflow: hidden;
+}
+
+.slick-list {
+  overflow: visible !important;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.slick-slide {
+  opacity: .25;
+  transform: scale(.82);
+  filter: blur(6px);
+  transition: all .5s ease;
+}
+
+.slick-slide > div {
+  padding: 0 10px;
+}
+
+.slick-center {
+  opacity: 1 !important;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.slick-current {
+  opacity: 1 !important;
+}
+
+.slick-dots {
+  display: none !important;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
